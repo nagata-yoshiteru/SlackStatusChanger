@@ -11,7 +11,7 @@
   "author": "nakajmg",
   "license": "GPL",
   "devDependencies": {
-    "electron": "1.7.9",
+    "electron": "1.7.16",
     "electron-packager": "^9.1.0"
   },
   "dependencies": {
