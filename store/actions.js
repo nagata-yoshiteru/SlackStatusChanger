@@ -147,7 +147,7 @@ module.exports = {
     // SSIDないからなにもしない
     if (!ssid) return
     // SSID変わってないから何もしない
-    if (ssid === state.prevSSID) return
+    // if (ssid === state.prevSSID) return
 
     const status = find(state.auto.settings, (setting) => {
       return includes(setting.ssid.split(','), ssid)
@@ -158,8 +158,8 @@ module.exports = {
 
     const {status_emoji, status_text} = status
     // status変化なし
-    if ( state.profile.status_text === status_text
-      && state.profile.status_emoji === status_emoji) return
+    // if ( state.profile.status_text === status_text
+    //   && state.profile.status_emoji === status_emoji) return
 
     dispatch(types.SET_CURRENT_STATUS, {status_emoji, status_text})
     commit(types.SET_CURRENT_SSID, {ssid})
