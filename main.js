@@ -142,6 +142,9 @@ menubar.on('ready', () => {
    */
   function setCurrentStatus({apiToken, status_emoji, status_text}) {
     const url = 'https://slack.com/api/users.profile.set'
+    const date = new Date();
+    const status_expiration = date.getTime() / 1000 + (5 * 60);
+
     const options = {
       url,
       method: 'POST',
@@ -150,6 +153,7 @@ menubar.on('ready', () => {
         profile: {
           status_emoji,
           status_text,
+          status_expiration,
         }
       }
     }
