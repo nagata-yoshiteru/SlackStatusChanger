@@ -14,7 +14,7 @@ Vue.component('CustomEmoji', CustomEmoji)
 Vue.mixin({
   methods: {
     emojiSheet(set, size) {
-      return `${__dirname}/img/${set}64.png`
+      return `img/${set}64.png`
     }
   }
 })
