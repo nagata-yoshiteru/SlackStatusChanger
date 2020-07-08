@@ -12,7 +12,7 @@
   "author": "nakajmg",
   "license": "GPL",
   "devDependencies": {
-    "electron": "1.8.8",
+    "electron": "2.0.18",
     "electron-packager": "^12.1.0"
   },
   "dependencies": {
