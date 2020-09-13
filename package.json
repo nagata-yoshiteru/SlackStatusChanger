@@ -21,7 +21,7 @@
     "bulma": "^0.8.0",
     "electron-json-storage": "^4.1.8",
     "emoji-mart-vue": "^2.6.6",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "menubar": "^5.2.3",
     "mousetrap": "^1.6.1",
     "object-assign": "^4.1.1",
