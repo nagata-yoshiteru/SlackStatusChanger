@@ -23,7 +23,7 @@
   const tokenUrl = 'https://us-central1-slack-user-status.cloudfunctions.net/callback'
   const Vue = require('vue/dist/vue.common')
   const types = require('./store/types')
-  const {ipcRenderer} = require('electron')
+  const { ipcRenderer, remote } = require('electron')
   new Vue({
     el: '#app',
     template: `
@@ -76,7 +76,7 @@
 
     methods: {
       clearWebviewStorage() {
-        const session = this.$refs.webview.getWebContents().session
+        const session = remote.webContents.fromId(this.$refs.webview.getWebContentsId()).session
         return new Promise((resolve, reject) => {
           session.clearStorageData(() => {
             resolve()

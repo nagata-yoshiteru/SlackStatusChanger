@@ -12,8 +12,9 @@
   "author": "nakajmg",
   "license": "GPL",
   "devDependencies": {
-    "electron": "4.2.12",
-    "electron-packager": "^12.1.0"
+    "devtron": "^1.4.0",
+    "electron": "^9.0.0",
+    "electron-packager": "^14.2.0"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -22,7 +23,7 @@
     "electron-json-storage": "^4.1.8",
     "emoji-mart-vue": "^2.6.6",
     "lodash": "^4.17.19",
-    "menubar": "^5.2.3",
+    "menubar": "^9.0.0",
     "mousetrap": "^1.6.1",
     "object-assign": "^4.1.1",
     "query-string": "^6.11.1",
