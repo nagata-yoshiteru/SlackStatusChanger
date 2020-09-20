@@ -5,20 +5,27 @@ const types = require('./store/types')
 const APIError = require('./APIError')
 const {keys, each, debounce} = require('lodash')
 const Promise = require('bluebird')
+const { menubar } = require('menubar');
 
 function apiErrorReport({name, message}) {
   console.error(name, message)
 }
 
-const menubar = require('menubar')({
+const mb = menubar({
   preloadWindow: true,
-  transparent: true,
   frame: false,
-  width: 280,
   icon: `${__dirname}/icon.png`,
+  browserWindow: {
+    width: 280,
+    transparent: true,
+    webPreferences: {
+      nodeIntegration: true,
+      enableRemoteModule: true,
+    },
+  },
 })
 
-menubar.app.once('ready', () => {
+mb.app.once('ready', () => {
   const menuTemplate = require('./menuTemplate')
   const menu = Menu.buildFromTemplate(menuTemplate)
   Menu.setApplicationMenu(menu)
@@ -27,10 +34,10 @@ menubar.app.once('ready', () => {
 let preference = null
 let signinWindow = null
 
-menubar.on('ready', () => {
-  let menuWindow = menubar.window.webContents
+mb.on('ready', () => {
+  let menuWindow = mb.window.webContents
 
-  menubar.window.on('close', () => {
+  mb.window.on('close', () => {
     app.quit()
   })
 
@@ -45,7 +52,7 @@ menubar.on('ready', () => {
   /**
    * for debug
    */
-  //menubar.showWindow()
+  //mb.showWindow()
   //menuWindow.openDevTools()
 
   /**
@@ -187,6 +194,10 @@ menubar.on('ready', () => {
       fullscreenable: false,
       maximizable: false,
       show: false,
+      webPreferences: {
+        nodeIntegration: true,
+        enableRemoteModule: true,
+      },
     })
 
     const listeners = {
@@ -213,8 +224,8 @@ menubar.on('ready', () => {
     })
   }
 
-  const dsyncStatus = debounce(syncStatus, 100)
-  const dverifyToken = debounce(verifyToken, 100)
+  const dsyncStatus = debounce(syncStatus, 500)
+  const dverifyToken = debounce(verifyToken, 500)
 
   const listeners = {
     [types.SYNC_STATUS](e, {apiToken}) { dsyncStatus({apiToken}) },
@@ -230,13 +241,17 @@ menubar.on('ready', () => {
     },
     [types.EXIT_APP]() {
       if (preference) preference.close()
-      menubar.window.close()
+      mb.window.close()
     },
     [types.OPEN_SIGNIN]() {
       signinWindow = new BrowserWindow({
         width: 600,
         height: 680,
         show: true,
+        webPreferences: {
+          nodeIntegration: true,
+          enableRemoteModule: true,
+        },
       })
       signinWindow.loadURL(`file://${__dirname}/signin.html`)
     },

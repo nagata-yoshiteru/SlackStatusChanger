@@ -12,6 +12,7 @@ module.exports = {
     state.profile.status_emoji = status_emoji
     state.profile.status_text = status_text
     state.profile.custom = custom
+    state.initialized = true
   },
 
   [types.SET_CURRENT_SSID](state, {ssid}) {

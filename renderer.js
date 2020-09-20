@@ -52,7 +52,7 @@ new Vue({
     if (!this.apiToken) {
       this.openPreference('account')
     }
-    this.initializeStatus()
+    this.initializeStatus(this.apiToken)
   },
 
   computed: assign({
