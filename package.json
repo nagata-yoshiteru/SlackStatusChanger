@@ -13,7 +13,7 @@
   "license": "GPL",
   "devDependencies": {
     "devtron": "^1.4.0",
-    "electron": "^10.0.0",
+    "electron": "^10.2.0",
     "electron-packager": "^15.0.0"
   },
   "dependencies": {
